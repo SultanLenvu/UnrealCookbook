@@ -7,7 +7,6 @@
 #include "IModule.h"
 #include "IWeapon.h"
 #include "IWeaponConstructable.h"
-#include "WeaponConstructor.h"
 #include "Weapon.generated.h"
 
 enum EWeaponStates

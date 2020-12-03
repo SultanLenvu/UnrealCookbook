@@ -3,13 +3,15 @@
 
 #include "WeaponConstructor.h"
 
-WeaponConstructor::WeaponConstructor()
+// Fill out your copyright notice in the Description page of Project Settings.
+
+UWeaponConstructor::UWeaponConstructor()
 {
 	ConstructingWeapon = nullptr;
 	CustomizedSlot = nullptr;
 }
 
-WeaponConstructor::WeaponConstructor(UObject* Weapon)
+UWeaponConstructor::UWeaponConstructor(UObject* Weapon)
 {
 	bool bIsNesting = Weapon->GetClass()->ImplementsInterface(UIWeaponConstructable::StaticClass());
 	if (bIsNesting)
@@ -20,16 +22,16 @@ WeaponConstructor::WeaponConstructor(UObject* Weapon)
 	CustomizedSlot = nullptr;
 }
 
-void WeaponConstructor::AssembleWeapon(TMap<ESlotType, UObject*> Map)
+/*void UWeaponConstructor::AssembleWeapon(TMap<ESlotType, UObject*> Map)
 {
 	for (auto It = Map.CreateConstIterator(); It; ++It)
 	{
 		GetModule(It.Key());
 		SetModule(It.Value());
 	}
-}
+}*/
 
-void WeaponConstructor::GetModule(const ESlotType Slot)
+void UWeaponConstructor::GetModule(const ESlotType Slot)
 {
 	switch (Slot)
 	{
@@ -65,7 +67,7 @@ void WeaponConstructor::GetModule(const ESlotType Slot)
 	}
 }
 
-void WeaponConstructor::SetModule(UObject* Module)
+void UWeaponConstructor::SetModule(UObject* Module)
 {
 	bool bIsNesting = Module->GetClass()->ImplementsInterface(UIModule::StaticClass());
 	if (bIsNesting)
@@ -83,7 +85,7 @@ void WeaponConstructor::SetModule(UObject* Module)
 	
 }
 
-WeaponConstructor::~WeaponConstructor()
+UWeaponConstructor::~UWeaponConstructor()
 {
 	ConstructingWeapon = nullptr;
 	CustomizedSlot = nullptr;

@@ -3,24 +3,31 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "WidgetBlueprint.h"
 #include "IWeaponConstructable.h"
 #include "IModule.h"
+#include "Weapon.h"
+#include "WeaponConstructor.generated.h"
+
 /**
-* 
-*/
-enum ESlotType;
-class GOLDENEGG_API WeaponConstructor
+ * 
+ */
+UCLASS()
+class GOLDENEGG_API UWeaponConstructor : public UWidgetBlueprint
 {
-	private:
+	GENERATED_BODY()
+protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Weapon Property")
 	TScriptInterface<IIWeaponConstructable> ConstructingWeapon;
 	TScriptInterface<IIModule>* CustomizedSlot;
-	public:
-	WeaponConstructor();
-	explicit WeaponConstructor(UObject* Weapon);
-	void AssembleWeapon(TMap<ESlotType, UObject*> Map);
+public:
+	UWeaponConstructor();
+	explicit UWeaponConstructor(UObject* Weapon);
+	//UFUNCTION(BlueprintCallable, BlueprintCosmetic)
+	//void AssembleWeapon(TMap<ESlotType, UObject*> Map);
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic)
 	void GetModule(ESlotType Slot);
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic)
 	void SetModule(UObject* Module);
-	~WeaponConstructor();
+	~UWeaponConstructor();
 };
-
-
