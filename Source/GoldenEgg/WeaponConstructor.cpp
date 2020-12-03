@@ -22,14 +22,14 @@ UWeaponConstructor::UWeaponConstructor(UObject* Weapon)
 	CustomizedSlot = nullptr;
 }
 
-/*void UWeaponConstructor::AssembleWeapon(TMap<ESlotType, UObject*> Map)
+void UWeaponConstructor::AssembleWeapon(TMap<TEnumAsByte<ESlotType>, UObject*> Map)
 {
 	for (auto It = Map.CreateConstIterator(); It; ++It)
 	{
-		GetModule(It.Key());
+		GetModule(It.Key().GetValue());
 		SetModule(It.Value());
 	}
-}*/
+}
 
 void UWeaponConstructor::GetModule(const ESlotType Slot)
 {

@@ -6,7 +6,6 @@
 #include "WidgetBlueprint.h"
 #include "IWeaponConstructable.h"
 #include "IModule.h"
-#include "Weapon.h"
 #include "WeaponConstructor.generated.h"
 
 /**
@@ -23,8 +22,8 @@ protected:
 public:
 	UWeaponConstructor();
 	explicit UWeaponConstructor(UObject* Weapon);
-	//UFUNCTION(BlueprintCallable, BlueprintCosmetic)
-	//void AssembleWeapon(TMap<ESlotType, UObject*> Map);
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic)
+	void AssembleWeapon(TMap<TEnumAsByte<ESlotType>, UObject*> Map);
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic)
 	void GetModule(ESlotType Slot);
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic)
