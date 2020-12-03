@@ -169,9 +169,9 @@ class GOLDENEGG_API IIModule
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCosmetic)
-	void SetStats(struct FWeaponStats& stats);
+	void SetStats(UPARAM(ref) FWeaponStats& stats);
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCosmetic)
-	void ResetStats(struct FWeaponStats& stats);
+	void ResetStats(UPARAM(ref) FWeaponStats& stats);
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCosmetic)
 	ESlotType GetSlotType();
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCosmetic)
