@@ -147,7 +147,8 @@ enum ESlotType
     Frame	UMETA(DisplayName = "Frame"),
     Bullet	UMETA(DisplayName = "Bullet"),
     Kit	UMETA(DisplayName = "Kit"),
-    GunPoint	UMETA(DisplayName = "GunPoint")
+    GunPoint	UMETA(DisplayName = "GunPoint"),
+	Handle	UMETA(DisplayName = "Handle")
 };
 
 enum ESlotTypes;
@@ -180,5 +181,7 @@ public:
     void ResetVisual();
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCosmetic)
 	FName GetSocketNameAttachTo();
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCosmetic)
+	ESlotType GetParentSlot();
 };
 

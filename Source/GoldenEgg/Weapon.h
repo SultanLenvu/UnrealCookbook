@@ -69,6 +69,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TScriptInterface<IIModule> GunPoint;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TScriptInterface<IIModule> Handle;
 	//Statistics struct...
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	FWeaponStats WeaponStats;
@@ -99,6 +102,8 @@ public:
 	virtual TScriptInterface<IIModule>* GetKit() override;
 
 	virtual TScriptInterface<IIModule>* GetGunPoint() override;
+
+	virtual TScriptInterface<IIModule>* GetHandle() override;
 	
 	virtual FWeaponStats& GetWeaponStats() override;
 };

@@ -94,9 +94,21 @@ void AWeapon::Tick(float DeltaTime)
 
 void AWeapon::SetModule(UObject* module)
 {
-	IIModule* Module = Cast<IIModule>(module);
-	Module->Execute_SetStats(module, WeaponStats);
-	Module->Execute_SetVisual(module,this->RootComponent, Module->Execute_GetSocketNameAttachTo(module));
+	IIModule::Execute_SetStats(module, WeaponStats);
+	USceneComponent* Root;
+	switch(IIModule::Execute_GetParentSlot(module))
+	{
+		case ESlotType::GunPoint:
+			Root = Cast<USceneComponent>(Muzzle.GetObject());
+			break;
+		case ESlotType::Grip:
+			Root = Cast<USceneComponent>(ForeGrip.GetObject());
+			break;
+		default:
+			Root = this->RootComponent;
+		break;
+	}
+	if (Root) IIModule::Execute_SetVisual(module,Root, IIModule::Execute_GetSocketNameAttachTo(module));
 }
 
 TScriptInterface<IIModule>* AWeapon::GetMuzzel()
@@ -142,6 +154,11 @@ TScriptInterface<IIModule>* AWeapon::GetKit()
 TScriptInterface<IIModule>* AWeapon::GetGunPoint()
 {
 	return &GunPoint;
+}
+
+TScriptInterface<IIModule>* AWeapon::GetHandle()
+{
+	return &Handle;
 }
 
 FWeaponStats& AWeapon::GetWeaponStats()
