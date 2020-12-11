@@ -109,6 +109,7 @@ void AWeapon::SetModule(UObject* module)
 		break;
 	}
 	if (Root) IIModule::Execute_SetVisual(module, Root, IIModule::Execute_GetSocketNameAttachTo(module));
+
 }
 
 TScriptInterface<IIModule>* AWeapon::GetMuzzel()
