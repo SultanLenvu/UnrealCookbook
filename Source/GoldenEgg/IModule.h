@@ -136,7 +136,7 @@ struct FWeaponStats
 	}
 };
 
-UENUM()
+UENUM(BlueprintType)
 enum ESlotType
 {
 	Muzzle	UMETA(DisplayName = "Muzzle"),
@@ -147,7 +147,8 @@ enum ESlotType
     Frame	UMETA(DisplayName = "Frame"),
     Bullet	UMETA(DisplayName = "Bullet"),
     Kit	UMETA(DisplayName = "Kit"),
-    GunPoint	UMETA(DisplayName = "GunPoint")
+    GunPoint	UMETA(DisplayName = "GunPoint"),
+	Handle	UMETA(DisplayName = "Handle")
 };
 
 enum ESlotTypes;
@@ -169,9 +170,9 @@ class GOLDENEGG_API IIModule
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCosmetic)
-	void SetStats(struct FWeaponStats& stats);
+	void SetStats(UPARAM(ref) FWeaponStats& stats);
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCosmetic)
-	void ResetStats(struct FWeaponStats& stats);
+	void ResetStats(UPARAM(ref) FWeaponStats& stats);
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCosmetic)
 	ESlotType GetSlotType();
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCosmetic)
@@ -180,5 +181,7 @@ public:
     void ResetVisual();
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCosmetic)
 	FName GetSocketNameAttachTo();
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCosmetic)
+	ESlotType GetParentSlot();
 };
 

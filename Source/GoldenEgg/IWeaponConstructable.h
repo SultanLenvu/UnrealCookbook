@@ -42,6 +42,8 @@ class GOLDENEGG_API IIWeaponConstructable
 	virtual TScriptInterface<IIModule>* GetKit() = 0;
 
 	virtual TScriptInterface<IIModule>* GetGunPoint() = 0;
+
+	virtual TScriptInterface<IIModule>* GetHandle() = 0;
 	
 	virtual FWeaponStats& GetWeaponStats() =0;
 };
