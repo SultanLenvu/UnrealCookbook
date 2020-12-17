@@ -136,7 +136,7 @@ struct FWeaponStats
 	}
 };
 
-UENUM()
+UENUM(BlueprintType)
 enum ESlotType
 {
 	Muzzle	UMETA(DisplayName = "Muzzle"),

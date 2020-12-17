@@ -100,16 +100,17 @@ void AWeapon::SetModule(UObject* module)
 	switch(IIModule::Execute_GetParentSlot(module))
 	{
 		case ESlotType::GunPoint:
-			Root = Cast<USceneComponent>(Muzzle.GetObject());
+			Root = Cast<AActor>(Muzzle.GetObject())->GetRootComponent();
 			break;
 		case ESlotType::Grip:
-			Root = Cast<USceneComponent>(ForeGrip.GetObject());
+			Root = Cast<AActor>(ForeGrip.GetObject())->GetRootComponent();
 			break;
 		default:
 			Root = this->RootComponent;
 		break;
 	}
-	if (Root) IIModule::Execute_SetVisual(module,Root, IIModule::Execute_GetSocketNameAttachTo(module));
+	if (Root) IIModule::Execute_SetVisual(module, Root, IIModule::Execute_GetSocketNameAttachTo(module));
+
 }
 
 TScriptInterface<IIModule>* AWeapon::GetMuzzel()

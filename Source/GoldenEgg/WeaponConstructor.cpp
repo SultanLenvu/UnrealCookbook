@@ -57,6 +57,9 @@ void UWeaponConstructor::GetModule(const ESlotType SlotType)
 	case GunPoint:
 		CustomizedSlot = ConstructingWeapon->GetGunPoint();
 		break;
+	case Handle:
+		CustomizedSlot = ConstructingWeapon->GetHandle();
+		break;
 	default:
 		break;
 	}
@@ -66,7 +69,7 @@ void UWeaponConstructor::SetModule(UObject* Module)
 	bool bIsNesting = Module->GetClass()->ImplementsInterface(UIModule::StaticClass());
 	if (bIsNesting)
 	{
-		if (CustomizedSlot)
+		if (CustomizedSlot->GetObject())
 		{
 			CustomizedSlot->operator->()->Execute_ResetVisual(CustomizedSlot->GetObject());	
 			CustomizedSlot->operator->()->Execute_ResetStats(CustomizedSlot->GetObject(),
@@ -84,3 +87,4 @@ UWeaponConstructor::~UWeaponConstructor()
 	ConstructingWeapon = nullptr;
 	CustomizedSlot = nullptr;
 }
+

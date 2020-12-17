@@ -7,18 +7,20 @@
 #include "IWeaponConstructable.h"
 #include "WeaponConstructor.generated.h"
 
+enum ESlotType;
 /**
- * 
- */
+* 
+*/
 UCLASS()
 class GOLDENEGG_API UWeaponConstructor : public UUserWidget
 {
 	GENERATED_BODY()
-protected:
+	protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Weapon Property")
 	TScriptInterface<IIWeaponConstructable> ConstructingWeapon = TScriptInterface<IIWeaponConstructable>();
 	TScriptInterface<IIModule>* CustomizedSlot;
-public:
+	public:
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic)
 	void SetWeapon(UObject* Weapon);
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic)
     void AssembleWeapon(TMap<TEnumAsByte<ESlotType>, UObject*> Map);
