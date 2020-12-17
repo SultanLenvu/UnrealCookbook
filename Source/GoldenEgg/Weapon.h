@@ -43,6 +43,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void MeleeHitEnd() override;
 protected:
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	USkeletalMeshComponent* MeshComponent;
 	//Slots properties...
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TScriptInterface<IIModule> Muzzle = TScriptInterface<IIModule>{};
